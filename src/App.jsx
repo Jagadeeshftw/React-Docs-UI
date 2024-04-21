@@ -1,6 +1,6 @@
 import { CORE_CONCEPTS, EXAMPLES } from "./data";
 import Header from "./components/headers";
-
+import TabButton from "./components/TabButton";
 const Concepts = ({ image, title, description }) => {
   return (
     <li>
@@ -21,6 +21,15 @@ function App() {
         <ul>
         {CORE_CONCEPTS.map((item)=> <Concepts {...item} />)}
         </ul>
+        </section>
+        <section id='examples'>
+          <h2>Examples</h2>
+          <menu>
+            <TabButton>Components</TabButton>
+            <TabButton>Jsx</TabButton>
+            <TabButton>Props</TabButton>
+            <TabButton>State</TabButton>
+          </menu>
         </section>
       </main>
     </div>

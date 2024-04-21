@@ -1,5 +1,5 @@
 const reactDescriptions = ["Fundamental", "Crucial", "Core"];
-
+import './headers.css';
 function genRandomInt(max) {
   return Math.floor(Math.random() * (max + 1));
 }
