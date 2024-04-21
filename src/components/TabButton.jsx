@@ -1,6 +1,6 @@
-const TabButton = ({children})=>{
+const TabButton = ({children, onSelect, isSelected})=>{
     return(
-        <li><button>{children}</button></li>
+        <li><button onClick={onSelect} className={isSelected==true?'active': 0}>{children}</button></li>
     );
 }
 export default TabButton;

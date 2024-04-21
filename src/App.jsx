@@ -1,35 +1,63 @@
 import { CORE_CONCEPTS, EXAMPLES } from "./data";
 import Header from "./components/headers";
 import TabButton from "./components/TabButton";
-const Concepts = ({ image, title, description }) => {
-  return (
-    <li>
-      <img src={image}></img>
-      <h3>{title}</h3>
-      <p>{description}</p>
-    </li>
-  );
-};
-
+import { useState } from "react";
+import Concepts from "./components/coreConcepts";
+import Box from "./components/Box";
+const content = "Please Click any Button";
 function App() {
+  const [val, getVal] = useState(content);
+  const handleClick = (selectedButton) => {
+    getVal(selectedButton);
+  };
   return (
     <div>
       <Header />
       <main>
-        <section id='core-concepts'>
-        <h2>Core Concepts</h2>
-        <ul>
-        {CORE_CONCEPTS.map((item)=> <Concepts {...item} />)}
-        </ul>
+        <section id="core-concepts">
+          <h2>Core Concepts</h2>
+          <ul>
+            {CORE_CONCEPTS.map((item) => (
+              <Concepts key={item.title} {...item} />
+            ))}
+          </ul>
         </section>
-        <section id='examples'>
+        <section id="examples">
           <h2>Examples</h2>
           <menu>
-            <TabButton>Components</TabButton>
-            <TabButton>Jsx</TabButton>
-            <TabButton>Props</TabButton>
-            <TabButton>State</TabButton>
+            <TabButton
+              onSelect={() => {
+                handleClick("Components");
+              }} isSelected={val==='Components'}
+            >
+              Components
+            </TabButton>
+            <TabButton
+              onSelect={() => {
+                handleClick("Jsx");
+              }} isSelected={val==='Jsx'}
+            >
+              Jsx
+            </TabButton>
+            <TabButton
+              onSelect={() => {
+                handleClick("Props");
+              }} isSelected={val==='Props'}
+            >
+              Props
+            </TabButton>
+            <TabButton
+              onSelect={() => {
+                handleClick("State");
+              }} isSelected={val==='State'}
+            >
+              State
+            </TabButton>
           </menu>
+          {val === content && content}
+          {!(val === content) && (
+           <Box {...EXAMPLES[val]}/>
+          )}
         </section>
       </main>
     </div>
