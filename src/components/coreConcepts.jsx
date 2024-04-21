@@ -1,11 +1,16 @@
-const Concepts = ({ image, title, description }) => {
+import { CORE_CONCEPTS } from "../data";
+import Concept from "./coreConcept";
+const coreConcepts = () => {
   return (
-    <li>
-      <img src={image}></img>
-      <h3>{title}</h3>
-      <p>{description}</p>
-    </li>
+    <section id="core-concepts">
+      <h2>Core Concepts</h2>
+      <ul>
+        {CORE_CONCEPTS.map((item) => (
+          <Concept key={item.title} {...item} />
+        ))}
+      </ul>
+    </section>
   );
 };
 
-export default Concepts;
+export default coreConcepts;
